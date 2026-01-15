@@ -20,6 +20,10 @@ namespace Microsoft.Unity.VisualStudio.Editor
 
 			foreach (var installation in VisualStudioCodeInstallation.GetVisualStudioInstallations())
 				yield return installation;
+
+			// Qoder support
+			foreach (var installation in VisualStudioQoderInstallation.GetVisualStudioInstallations())
+				yield return installation;
 		}
 
 		public static bool TryDiscoverInstallation(string editorPath, out IVisualStudioInstallation installation)
@@ -31,6 +35,10 @@ namespace Microsoft.Unity.VisualStudio.Editor
 					return true;
 #endif
 				if (VisualStudioCodeInstallation.TryDiscoverInstallation(editorPath, out installation))
+					return true;
+
+				// Qoder support
+				if (VisualStudioQoderInstallation.TryDiscoverInstallation(editorPath, out installation))
 					return true;
 			}
 			catch (IOException)
@@ -47,6 +55,7 @@ namespace Microsoft.Unity.VisualStudio.Editor
 			VisualStudioForWindowsInstallation.Initialize();
 #endif
 			VisualStudioCodeInstallation.Initialize();
+			VisualStudioQoderInstallation.Initialize();
 		}
 	}
 }

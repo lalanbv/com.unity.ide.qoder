@@ -1,5 +1,5 @@
 {
-    "name": "Unity.VisualStudio.Editor",
+    "name": "Unity.Qoder.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"
