@@ -125,7 +125,10 @@ namespace Microsoft.Unity.VisualStudio.Editor
 		{
 			get
 			{
-				return GeneratorFactory.GetInstance(Version.Major >= 18 ? GeneratorStyle.SDK : GeneratorStyle.Legacy);
+				if (Version.Major >= 18)
+					return new SdkStyleProjectGeneration();
+				else
+					return new LegacyStyleProjectGeneration();
 			}
 		}
 

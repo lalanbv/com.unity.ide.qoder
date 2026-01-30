@@ -4,24 +4,22 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-using SR = System.Reflection;
-
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEditor;
 
-namespace Microsoft.Unity.VisualStudio.Editor {
-
-	internal class TypeCacheHelper
-	{
-		internal static IEnumerable<SR.MethodInfo> GetPostProcessorCallbacks(string name)
-		{
-			return TypeCache
-				.GetTypesDerivedFrom<AssetPostprocessor>()
-				.Where(t => t.Assembly.GetName().Name != KnownAssemblies.Bridge) // never call into the bridge if loaded with the package
-				.Select(t => t.GetMethod(name, SR.BindingFlags.Public | SR.BindingFlags.NonPublic | SR.BindingFlags.Static))
-				.Where(m => m != null);
-		}
-	}
-
+namespace Microsoft.Unity.VisualStudio.Editor
+{
+    internal static class TypeCacheHelper
+    {
+        internal static IEnumerable<MethodInfo> GetPostProcessorCallbacks(string name)
+        {
+            return TypeCache
+                .GetTypesDerivedFrom<AssetPostprocessor>()
+                .Where(t => t.Assembly.GetName().Name != KnownAssemblies.Bridge)
+                .Select(t => t.GetMethod(name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
+                .Where(m => m != null);
+        }
+    }
 }

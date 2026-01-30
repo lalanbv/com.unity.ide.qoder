@@ -1,14 +1,17 @@
 {
   "name": "com.unity.ide.qoder",
   "displayName": "Qoder Editor",
-  "description": "Code editor integration for supporting Qoder as code editor for Unity. Adds support for generating csproj files for intellisense purposes, auto discovery of installations, etc.",
-  "version": "1.0.0",
+  "description": "Code editor integration for supporting Qoder as code editor for Unity. Adds support for generating csproj files for IntelliSense, auto discovery of installations, debugging configuration, and more.",
+  "version": "1.1.0",
   "unity": "2019.4",
+  "unityRelease": "25f1",
   "keywords": [
     "qoder",
     "ide",
     "code editor",
-    "ai"
+    "ai",
+    "intellisense",
+    "debugging"
   ],
   "author": {
     "name": "lalanbv",
@@ -17,5 +20,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/lalanbv/com.unity.ide.qoder.git"
+  },
+  "dependencies": {
+    "com.unity.test-framework": "1.1.33"
+  },
+  "_upm": {
+    "changelog": "v1.1.0:\n- Fixed GetRealPath platform protection for Windows\n- Fixed package name in FileUtility.GetPackageAssetFullPath\n- Fixed duplicate condition in FindRunningQoderWithSolution\n- Added .slnx support in VisualStudioCodeInstallation\n- Added exception logging in CreateExtraFiles methods\n- Enhanced recommended extensions list\n- Added GeneratorFactory for SDK/Legacy style switching\n- Updated C# language support to 13.0\n- Enhanced settings.json with file associations and nesting\n- Improved extension path discovery\n- Added comprehensive debugging configurations"
   }
 }

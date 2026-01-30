@@ -9,10 +9,9 @@ using UnityEditor.Compilation;
 
 namespace Microsoft.Unity.VisualStudio.Editor
 {
-
 	internal class LegacyStyleProjectGeneration : ProjectGeneration
 	{
-		internal override GeneratorStyle Style => GeneratorStyle.Legacy;
+		internal override string StyleName => "Legacy";
 
 		public LegacyStyleProjectGeneration(string tempDirectory, IAssemblyNameProvider assemblyNameProvider, IFileIO fileIoProvider, IGUIDGenerator guidGenerator) : base(tempDirectory, assemblyNameProvider, fileIoProvider, guidGenerator)
 		{
